@@ -1,13 +1,14 @@
 from typing import Optional, List
 from sqlalchemy.orm import Session
 from src.models.users import User, UserType, Email
+from src.repositories.interfaces import IUserRepository
 
 
-class UserRepository:
+class UserRepository(IUserRepository[User]):
     def __init__(self, session: Session):
         self.session = session
 
-    def add(self, user: User):
+    def add(self, user: User) -> User:
         self.session.add(user)
         self.session.commit()
         self.session.refresh(user)

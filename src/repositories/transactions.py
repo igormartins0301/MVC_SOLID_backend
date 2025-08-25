@@ -1,9 +1,10 @@
 from typing import Optional, List
 from sqlalchemy.orm import Session
 from src.models.transactions import Transaction, Status
+from src.repositories.interfaces import ITransactionRepository
 
 
-class TransactionRepository:
+class TransactionRepository(ITransactionRepository[Transaction]):
     def __init__(self, session: Session):
         self.session = session
 

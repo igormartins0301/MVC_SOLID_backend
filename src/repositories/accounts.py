@@ -1,9 +1,10 @@
 from typing import List, Optional
 from sqlalchemy.orm import Session
 from src.models.accounts import Account
+from src.repositories.interfaces import IAccountRepository
 
 
-class AccountRepository:
+class AccountRepository(IAccountRepository[Account]):
     def __init__(self, session: Session):
         self.session = session
 
